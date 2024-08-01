@@ -24,13 +24,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -60,7 +60,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LAYER_NAMESPACE=toolkit;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LAYER_NAMESPACE=toolkit;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -118,7 +118,7 @@ $(SolutionDir)\installer\signtool.exe sign /d "OpenXR Toolkit" /du "https://mbuc
       </Message>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>python $(ProjectDir)\framework\dispatch_generator.py
+      <Command>REM python $(ProjectDir)\framework\dispatch_generator.py
 if not exist $(SolutionDir)\version.info goto :skip_version
 for /f "delims== tokens=1,2" %%G in ($(SolutionDir)\version.info) do set %%G=%%H
 $(SolutionDir)\patches\sed.exe -i "s/const std::string LayerPrettyNameFull = \"OpenXR Toolkit - .*\";$/const std::string LayerPrettyNameFull = \"OpenXR Toolkit - %pretty_name% (v%major%.%minor%.%patch%)\";/g" $(ProjectDir)\layer.h
@@ -198,7 +198,7 @@ $(SolutionDir)\installer\signtool.exe sign /d "OpenXR Toolkit" /du "https://mbuc
       </Message>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>python $(ProjectDir)\framework\dispatch_generator.py
+      <Command>REM  python $(ProjectDir)\framework\dispatch_generator.py
 if not exist $(SolutionDir)\version.info goto :skip_version
 for /f "delims== tokens=1,2" %%G in ($(SolutionDir)\version.info) do set %%G=%%H
 $(SolutionDir)\patches\sed.exe -i "s/const std::string LayerPrettyNameFull = \"OpenXR Toolkit - .*\";$/const std::string LayerPrettyNameFull = \"OpenXR Toolkit - %pretty_name% (v%major%.%minor%.%patch%)\";/g" $(ProjectDir)\layer.h

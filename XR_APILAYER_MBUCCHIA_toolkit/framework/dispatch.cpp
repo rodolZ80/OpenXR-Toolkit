@@ -175,10 +175,10 @@ namespace LAYER_NAMESPACE {
 
             if (xrEnumerateInstanceExtensionProperties) {
                 uint32_t extensionsCount = 0;
-                CHECK_XRCMD(xrEnumerateInstanceExtensionProperties(nullptr, 0, &extensionsCount, nullptr));
+              //  CHECK_XRCMD(xrEnumerateInstanceExtensionProperties(nullptr, 0, &extensionsCount, nullptr));
                 std::vector<XrExtensionProperties> extensions(extensionsCount, {XR_TYPE_EXTENSION_PROPERTIES});
-                CHECK_XRCMD(xrEnumerateInstanceExtensionProperties(
-                    nullptr, extensionsCount, &extensionsCount, extensions.data()));
+              /*  CHECK_XRCMD(xrEnumerateInstanceExtensionProperties(
+                      nullptr, extensionsCount, &extensionsCount, extensions.data())); */
                 for (auto extension : extensions) {
                     const std::string extensionName(extension.extensionName);
 
